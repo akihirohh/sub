@@ -7,16 +7,7 @@ int i = 0;
 
 void danielCallback(const std_msgs::Char::ConstPtr& msg)
 {
-  if(msg->data == '#')
-  {
-	i = 0;
-	ROS_INFO("%s", buffer);
-  }
-  else
-  {
-   	buffer[i] = msg->data;
-  	i++;
-  }
+	ROS_INFO("%c", msg->data);
 }
 
 void glaucoCallback(const std_msgs::Int32MultiArray::ConstPtr& msg)
@@ -40,7 +31,7 @@ int main(int argc, char **argv)
   ros::NodeHandle n;
 
   ros::Subscriber sub = n.subscribe("/daniel", 1, danielCallback);
-  ros::Subscriber sub2 = n.subscribe("/glauco", 1, glaucoCallback);
+  //ros::Subscriber sub2 = n.subscribe("/glauco", 1, glaucoCallback);
 
   ros::spin();
 
